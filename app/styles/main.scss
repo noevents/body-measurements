@@ -35,7 +35,7 @@
   border-bottom: 1px dashed $main;
   width: 50px;
   outline: none;
-  padding: 0px 0px 0px 0px;
+  padding: 0 5px;
   font-style: italic;
   // margin-left: 20px;
 }
@@ -55,11 +55,12 @@ body {
 }
 
 .wrapper {
+  margin-top: 20px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  @media (max-width: 768px) {
+  @media (max-width: $md) {
     flex-direction: row;
   }
 }
@@ -98,7 +99,10 @@ body {
 
 #height-value {
   top: 190px;
-  left: -45px
+  left: -55px;
+  @media (max-width: $md) {
+    top: 100px;
+  }
 }
 
 #chest-value {
