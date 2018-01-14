@@ -1,0 +1,258 @@
+@import 'vars.scss';
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+.form input,
+.form label {
+  font-size: 16px;
+}
+
+.form label {
+  display: block;
+  margin-bottom: 10px;
+}
+
+.form label > span{
+  display: inline-block;
+  width: 90px;
+  &.units {
+    width: 5px;
+    text-align: right;
+    // float: right;
+    font-size: 12px;
+    color: $main;
+  }
+}
+
+.form input {
+  text-align: right;
+  background: transparent;
+  border: none;
+  border-bottom: 1px dashed $main;
+  width: 50px;
+  outline: none;
+  padding: 0px 0px 0px 0px;
+  font-style: italic;
+  // margin-left: 20px;
+}
+
+.form input:focus {
+  border-bottom: 1px dashed $secondary;
+}
+
+html,
+body {
+  width: 100%;
+  padding: 0;
+  font-family: 'Raleway', sans-serif;
+  background-color: white;
+  font-size: 18px;
+  line-height: 1.6;
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.representation {
+  position: relative;
+  width: 170px;
+  height: 450px;
+  & > * {
+    z-index: 2
+  }
+}
+
+#top-line,
+#bottom-line,
+#height-value,
+#chest-arrow,
+#chest-value,
+#waist-arrow,
+#waist-value,
+#hips-arrow,
+#hips-value,
+#weight-value {
+  position: absolute;
+}
+
+#height-value,
+#chest-value,
+#waist-value,
+#hips-value,
+#weight-value {
+  color: $main;
+  font-size: 15.5px;
+}
+
+#height-value {
+  top: 190px;
+  left: -45px
+}
+
+#chest-value {
+  top: 103px;
+  left: $human-middle 
+}
+
+#waist-value {
+  top: 155px;
+  left: $human-middle 
+}
+
+#hips-value {
+  top: $male-hips;
+  left: $human-middle 
+}
+
+#weight-value {
+  bottom: 10px;
+  right: 10px;
+}
+
+.arrow-line {
+  position: absolute;
+  top:0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  background-color: $secondary;
+}
+
+.dashed {
+  width: 0;
+  border-bottom: 3px dashed $secondary;
+  transition: 0.5s;
+  &.animate {
+    width: 50%
+  }
+}
+
+#top-line {
+  top: $male-head;
+}
+
+#bottom-line {
+  top: $male-feet;
+  &.animate {
+    width: 80%
+  }
+}
+
+#height-arrow {
+  width: 3px;
+  position: absolute;
+  top: 4px;
+  height: 0;
+  transition: 0.5s;
+  & > * {
+    display: none;
+  };
+  &.animate {
+    height: $human-height;
+    & > * {
+      display: block;
+    }
+  }
+  & > .arrow-line {
+    &::before {
+      top:0;
+      left: -3px;
+      position: absolute;
+      content: '';
+      border: solid $secondary;
+      border-width: 0 3px 3px 0;
+      display: inline-block;
+      padding: 3px;
+      transform: rotate(-135deg);
+    }
+    &::after {
+      bottom:0;
+      left: -3px;
+      position: absolute;
+      content: '';
+      border: solid $secondary;
+      border-width: 0 3px 3px 0;
+      display: inline-block;
+      padding: 3px;
+      transform: rotate(45deg);
+    }
+  }
+}
+
+#chest-arrow,
+#waist-arrow,
+#hips-arrow {
+  width: 0;
+  height: 3px;
+  transition: 0.5s;
+  & > * {
+    display: none;
+  }
+  &.animate {
+    & > * {
+      display: block;
+    }
+  }
+  & > .arrow-line {
+    &::before {
+      top: -3px;
+      left: 0;
+      position: absolute;
+      content: '';
+      border: solid $secondary;
+      border-width: 0 3px 3px 0;
+      display: inline-block;
+      padding: 3px;
+      transform: rotate(135deg);
+    }
+    &::after {
+      top: -3px;
+      right: 0;
+      position: absolute;
+      content: '';
+      border: solid $secondary;
+      border-width: 0 3px 3px 0;
+      display: inline-block;
+      padding: 3px;
+      transform: rotate(-45deg);
+    }
+  }
+}
+
+#chest-arrow {
+  top: $male-chest;
+  left: $male-chest-pos;
+  &.animate {
+    width: $male-chest-width;
+  }
+}
+
+#waist-arrow {
+  top: $male-waist;
+  left: $male-waist-pos;
+  &.animate {
+    width: $male-waist-width;
+  }
+}
+
+#hips-arrow {
+  top: $male-hips;
+  left: $male-hips-pos;
+  &.animate {
+    width: $male-hips-width;
+  }
+}
+
+#human {
+  z-index: 1;
+  position: absolute;
+  // left: 25%;
+}
