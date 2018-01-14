@@ -59,9 +59,13 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  @media (max-width: 768px) {
+    flex-direction: row;
+  }
 }
 
 .representation {
+  margin: 0 15px;
   position: relative;
   width: 170px;
   height: 450px;
